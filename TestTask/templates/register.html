@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Register">
+    </form>
+    {% if errors %}
+        {% for error in errors %}
+            <div style="color: red">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <div>Or login by</div>
+        <div><a href="{% url 'vk:begin' 'vk-oauth2'%}"><button>VK</button></a></div>
+        <div>Or by</div>
+        <div><a href="{% url 'default:authorization' %}"><button>Default</button></a></div>
+    </div>
+</body>
+</html>

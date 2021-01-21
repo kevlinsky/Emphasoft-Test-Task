@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Authorization</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login">
+    </form>
+    {% if error %}
+        <div style="color: red">
+            {{ error }}
+        </div>
+    {% endif %}
+    <div>
+        <div>Other variants:</div>
+        <div><a href="{% url 'vk:begin' 'vk-oauth2'%}"><button>Login by VK</button></a></div>
+        <div>Or</div>
+        <div><a href="{% url 'default:registration' %}"><button>Register</button></a></div>
+    </div>
+</body>
+</html>

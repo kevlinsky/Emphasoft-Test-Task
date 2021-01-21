@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Welcome to our site!</h1>
+    {% if not authenticated %}
+        <a href="{% url 'default:authorization' %}"><button>Login by default</button></a>
+        <a href="{% url 'vk:begin' 'vk-oauth2' %}"><button>Login by VK</button></a>
+        <a href="{% url 'default:registration' %}"><button>Register</button></a>
+    {% else %}
+        <a href="{% url 'profile' %}"><button>Profile</button></a>
+        <a href="{% url 'default:logout' %}"><button>Logout</button></a>
+    {% endif %}
+</body>
+</html>

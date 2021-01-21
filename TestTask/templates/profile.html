@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <style>
+        img {
+            border-radius: 50%;
+        }
+        a {
+            text-decoration-line: none;
+        }
+        a:visited {
+            color: #0000FF;
+        }
+    </style>
+</head>
+<body>
+    <h1>Profile</h1>
+    <h1>Hi, {{ user.get_full_name }}!</h1>
+    {% if friends %}
+        <div>
+            <div>Your friends:</div>
+            {% for friend in friends %}
+                <div>
+                    <a href="https://vk.com/id{{ friend.id }}" target="_blank">
+                        <span><img src="{{ friend.photo_100 }}" alt="avatar"></span>
+                        <span>{{ friend.first_name }} {{ friend.last_name }}</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div>Login by VK to see your friends</div>
+    {% endif %}
+    <a href="{% url 'default:logout' %}"><button>Logout</button></a>
+</body>
+</html>
